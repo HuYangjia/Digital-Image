@@ -19,13 +19,9 @@ theta = input('请输入theta: ');
 % b = 0;
 % theta = 30; % 旋转角度
 
-% 计算真的平移量
-% a = a+width/2;
-% b = b+height/2;
+
 theta = deg2rad(theta); % 将角度转换为弧度
 
-% 输出a,b检查
-fprintf('a = %d, b = %d\n', a, b);
 
 % 创建并计算移动矩阵
 move_re = [1 0 a; 0 1 b; 0 0 1];
@@ -110,3 +106,9 @@ title('最近邻');
 figure;
 imshow(bilinear),
 title('双线性');
+
+% 水平拼接两张图像
+img_concatenated = cat(2, image, nearist, bilinear);
+
+% 保存拼接后的图像
+imwrite(img_concatenated, '/home/ubuntu/Downloads/matlab/lab1/image2_move.jpg');

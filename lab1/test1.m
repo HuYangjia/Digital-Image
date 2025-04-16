@@ -50,3 +50,9 @@ end
 figure;
 imshow(new_image);
 title('平移后的图像');
+
+% 水平拼接两张图像
+img_concatenated = cat(2, image, new_image);
+
+% 保存拼接后的图像
+imwrite(img_concatenated, '/home/ubuntu/Downloads/matlab/lab1/image1_move.jpg');

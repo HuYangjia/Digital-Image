@@ -5,12 +5,12 @@ image = imread('image1.jpg');
 [height, width, channels] = size(image);
 
 % 获取输入的平移量
-% a = input('请输入a: ');
-% b = input('请输入b: ');
+a = input('请输入a: ');
+b = input('请输入b: ');
 
 % for quick test
-a = 2;
-b = 2;
+% a = 2;
+% b = 2;
 
 % 计算真的平移量
 % a = a+width/2;
@@ -96,3 +96,9 @@ title('最近邻');
 figure;
 imshow(bilinear),
 title('双线性');
+
+% 水平拼接两张图像
+img_concatenated = cat(2, image, nearist, bilinear);
+
+% 保存拼接后的图像
+imwrite(img_concatenated, '/home/ubuntu/Downloads/matlab/lab1/image3_move.jpg');
