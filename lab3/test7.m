@@ -16,12 +16,17 @@ blood_sobel = edge(blood, 'Sobel');
 lena_prewitt = edge(lena, 'Prewitt');
 blood_prewitt = edge(blood, 'Prewitt');
 
-% 4邻域拉普拉斯算子
-lena_laplacian1 = edge(lena, 'log');
-blood_laplacian1 = edge(blood, 'log');
-% 8邻域拉普拉斯算子
-lena_laplacian2 = edge(lena, 'log', 0, 1);
-blood_laplacian2 = edge(blood, 'log', 0, 1);
+
+% 拉普拉斯
+result_lena = laplacian_edge_detection(lena);
+lena_laplacian1 = result_lena{1}; % 使用第一个拉普拉斯结果
+lena_laplacian2 = result_lena{2}; % 使用第二个拉普拉斯结果
+
+result_blood = laplacian_edge_detection(blood);
+blood_laplacian1 = result_blood{1}; % 使用第一个拉普拉斯结果
+blood_laplacian2 = result_blood{2}; % 使用第二个拉普拉斯结果
+
+
 
 % Canny算子
 lena_canny = edge(lena, 'Canny');
@@ -47,3 +52,24 @@ subplot(2, 7, 14); imshow(blood_canny); title('Canny');
 % 调整子图间距
 set(gcf, 'Position', get(0,'Screensize')); % 使图形窗口最大化
 saveas(gcf, [filename 'subplot_edge.png']);
+
+
+
+function edges = laplacian_edge_detection(image)
+    % 定义两个拉普拉斯模板
+    kernel1 = [0 1 0; 1 -4 1; 0 1 0];
+    kernel2 = [-1 -1 -1; -1 8 -1; -1 -1 -1];
+
+    % 应用第一个模板
+    result1 = conv2(double(image), double(kernel1), 'same');
+    
+    % 应用第二个模板
+    result2 = conv2(double(image), double(kernel2), 'same');
+
+    % 将结果转换为uint8类型
+    result1 = uint8(result1);
+    result2 = uint8(result2);
+
+    % 返回检测结果
+    edges = {result1, result2};
+end
