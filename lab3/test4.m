@@ -41,4 +41,4 @@ subplot(2, 4, 8);
 imshow(image_median_random);
 title('中值滤波随机噪声图像');
 
-saveas(gcf, [filename 'subplo   t_median.png']);
+saveas(gcf, [filename 'subplot_median.png']);

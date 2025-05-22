@@ -27,3 +27,7 @@ title('直方图规定化后的图像');
 subplot(3,2,6);
 histogram(image3);
 title('直方图规定化后的图像直方图');
+
+% 保存
+filename = '/home/ubuntu/Downloads/matlab/lab2/fig/';
+saveas(gcf, [filename 'test4.png']);
