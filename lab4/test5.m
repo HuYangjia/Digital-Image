@@ -1,14 +1,14 @@
 % 展示设计的滤波器
-% idea = get_filter(1, 256, 256, 50, 2, 1);
-% btw = get_filter(2, 256, 256, 50, 2, 1);
-% gaussion = get_filter(3, 256, 256, 50, 2, 1);
+idea = get_filter(1, 256, 256, 50, 2, 1);
+btw = get_filter(2, 256, 256, 50, 2, 1);
+gaussion = get_filter(3, 256, 256, 50, 2, 1);
 
 % 读取图像
-% image1 = imread("/home/ubuntu/Downloads/matlab/lab4/fig/Girl.bmp");
-% image2 = imread("/home/ubuntu/Downloads/matlab/lab4/fig/pout.bmp");
+image1 = imread("/home/ubuntu/Downloads/matlab/lab4/fig/Girl.bmp");
+image2 = imread("/home/ubuntu/Downloads/matlab/lab4/fig/pout.bmp");
 % 实验发现，使用Rect1,2更容易识别振铃现象
-image1 = imread("/home/ubuntu/Downloads/matlab/lab4/fig/Rect1.bmp");
-image2 = imread("/home/ubuntu/Downloads/matlab/lab4/fig/Rect2.bmp");
+% image1 = imread("/home/ubuntu/Downloads/matlab/lab4/fig/Rect1.bmp");
+% image2 = imread("/home/ubuntu/Downloads/matlab/lab4/fig/Rect2.bmp");
 
 % rect1
 M = size(image1, 1);
@@ -49,7 +49,7 @@ subplot(2, 4, 8); imshow(output_2_gaussion, []); title('高斯高通滤波器');
 
 % 保存
 filename = '/home/ubuntu/Downloads/matlab/lab4/fig/';
-saveas(gcf, [filename 'test5.png']);
+saveas(gcf, [filename 'test51.png']);
 
 
 function H = get_filter(type, M, N, D0, n, check)
@@ -90,6 +90,7 @@ function H = get_filter(type, M, N, D0, n, check)
         title(['Filter Type: ', num2str(type)]);
         colormap(gray);
         colorbar;
+        saveas(gcf, ['/home/ubuntu/Downloads/matlab/lab4/fig/filter_' num2str(type) '.png']);
     end
     % return H;
 end
