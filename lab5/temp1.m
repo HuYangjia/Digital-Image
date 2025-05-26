@@ -45,4 +45,4 @@ subplot(2, 4, 8); imshow(result_wiener_2); title('高斯+维纳滤波恢复图�
 
 % 保存
 filename = '/home/ubuntu/Downloads/matlab/lab5/fig/';
-saveas(gcf, [filename 'temp1.png']);
+saveas(gcf, [filename 'temp11.png']);
